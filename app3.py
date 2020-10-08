@@ -54,9 +54,9 @@ textField = Entry(window, font=('Verdana',22),justify=RIGHT)
 textField.pack(side=TOP,fill=X,padx=10)
 
 # creating button pad
-buttonFrame = Frame(window)
+buttonFrame = Frame(window, width=450, height=340)
 buttonFrame.configure(bg='#F3F5F5')
-buttonFrame.pack(side=TOP)
+buttonFrame.place(x=10,y=130)
 
 # now adding buttons to frame
 # btn1 = Button(buttonFrame,text="1",font=font)
@@ -80,69 +80,92 @@ for i in range(0,3):
             beforeHeight = i*keypadBtnHeight
         btn.bind('<Button-1>', click_btn_func)
 """
-btn1 = Button(buttonFrame,text="1",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+btn1 = Button(buttonFrame,text="1",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5',width=1)
 btn1.place(x = 0, y = 0, width = keypadBtnWidth, height = keypadBtnHeight)
 btn1.bind('<Button-1>',click_btn_func)
 
 btn2 = Button(buttonFrame,text="2",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-btn2.place(x = 70, y = 0, width = keypadBtnWidth, height = keypadBtnHeight)
+btn2.place(x = 1*keypadBtnWidth, y = 0, width = keypadBtnWidth, height = keypadBtnHeight)
 btn2.bind('<Button-1>',click_btn_func)
 
 btn3 = Button(buttonFrame,text="3",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-btn3.place(x = 140, y = 0, width = keypadBtnWidth, height = keypadBtnHeight)
+btn3.place(x = 2*keypadBtnWidth, y = 0, width = keypadBtnWidth, height = keypadBtnHeight)
 btn3.bind('<Button-1>',click_btn_func)
 
 btn4 = Button(buttonFrame,text="4",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-btn4.place(x = 0, y = 50, width = keypadBtnWidth, height = keypadBtnHeight)
+btn4.place(x = 0, y = 1*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 btn4.bind('<Button-1>',click_btn_func)
 
 btn5 = Button(buttonFrame,text="5",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-btn5.place(x = 70, y = 50, width = keypadBtnWidth, height = keypadBtnHeight)
+btn5.place(x = 1*keypadBtnWidth, y = 1*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 btn5.bind('<Button-1>',click_btn_func)
 
 btn6 = Button(buttonFrame,text="6",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-btn6.place(x = 140, y = 50, width = keypadBtnWidth, height = keypadBtnHeight)
+btn6.place(x = 2*keypadBtnWidth, y = 1*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 btn6.bind('<Button-1>',click_btn_func)
 
 btn7 = Button(buttonFrame,text="7",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-btn7.place(x = 0, y = 100, width = keypadBtnWidth, height = keypadBtnHeight)
+btn7.place(x = 0, y = 2*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 btn7.bind('<Button-1>',click_btn_func)
 
 btn8 = Button(buttonFrame,text="8",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-btn8.place(x = 70, y = 100, width = keypadBtnWidth, height = keypadBtnHeight)
+btn8.place(x = 1*keypadBtnWidth, y = 2*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 btn8.bind('<Button-1>',click_btn_func)
 
 btn9 = Button(buttonFrame,text="9",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-btn9.place(x = 140, y = 100, width = keypadBtnWidth, height = keypadBtnHeight)
+btn9.place(x = 2*keypadBtnWidth, y = 2*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 btn9.bind('<Button-1>',click_btn_func)
 
 zeroBtn = Button(buttonFrame,text="0",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-zeroBtn.place(x = 0, y = 150, width = keypadBtnWidth, height = keypadBtnHeight)
+zeroBtn.place(x = 0, y = 3*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
 dotBtn = Button(buttonFrame,text=".",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-dotBtn.place(x = 70, y = 150, width = keypadBtnWidth, height = keypadBtnHeight)
+dotBtn.place(x = 1*keypadBtnWidth, y = 3*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
-equalBtn = Button(buttonFrame,text="=",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-equalBtn.place(x = 140, y = 150, width = keypadBtnWidth, height = keypadBtnHeight)
+percentBtn = Button(buttonFrame,text="%",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+percentBtn.place(x = 2*keypadBtnWidth, y = 3*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
 # operational btn
-plusBtn = Button(buttonFrame,text="+",font=keypadFont, width=4, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-plusBtn.grid(row=0, column=3, padx=5)
+picDivide = PhotoImage(file='divide.png')
+divideBtn = Button(buttonFrame,text="/", image=picDivide,font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+divideBtn.place(x = 3*keypadBtnWidth, y = 0*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
-minusBtn = Button(buttonFrame,text="-",font=keypadFont, width=4, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-minusBtn.grid(row=1, column=3, padx=5)
+picMultiply = PhotoImage(file='multiply.png')
+multyBtn = Button(buttonFrame,text="*", image=picMultiply,font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+multyBtn.place(x = 3*keypadBtnWidth, y = 1*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
-multyBtn = Button(buttonFrame,text="*",font=keypadFont, width=4, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-multyBtn.grid(row=2, column=3, padx=5)
+picMinus = PhotoImage(file='minus.png')
+minusBtn = Button(buttonFrame,text="-", image=picMinus,font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+minusBtn.place(x = 3*keypadBtnWidth, y = 2*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
-divideBtn = Button(buttonFrame,text="/",font=keypadFont, width=4, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
-divideBtn.grid(row=3, column=3, padx=5)
+plusBtn = Button(buttonFrame,text="+",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+plusBtn.place(x = 3*keypadBtnWidth, y = 3*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
-clearBtn = Button(buttonFrame,text="C",font=keypadFont, width=10, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5',command=clear)
-clearBtn.grid(row=4, column=0, columnspan=2)
 
-allClearBtn = Button(buttonFrame,text="AC",font=keypadFont, width=10, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5', command=all_clear)
-allClearBtn.grid(row=4, column=2, columnspan=2)
+picClear = PhotoImage(file='backspace.png')
+clearBtn = Button(buttonFrame, image=picClear, font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5',command=clear)
+clearBtn.place(x = 4*keypadBtnWidth, y = 0*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
+
+startGroupBtn = Button(buttonFrame,text="(",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+startGroupBtn.place(x = 4*keypadBtnWidth, y = 1*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
+
+picSquare = PhotoImage(file='square.png')
+squareBtn = Button(buttonFrame, image=picSquare,font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+squareBtn.place(x = 4*keypadBtnWidth, y = 2*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
+
+allClearBtn = Button(buttonFrame,text="AC",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5', command=all_clear)
+allClearBtn.place(x = 5*keypadBtnWidth, y = 0*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
+
+endGroupBtn = Button(buttonFrame,text=")",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+endGroupBtn.place(x = 5*keypadBtnWidth, y = 1*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
+
+picRoot = PhotoImage(file='square-root.png')
+rootBtn = Button(buttonFrame, image=picRoot,font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+rootBtn.place(x = 5*keypadBtnWidth, y = 2*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
+
+# equalsBtn
+equalBtn = Button(buttonFrame,text="=",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+equalBtn.place(x = 4*keypadBtnWidth, y = 3*keypadBtnHeight, width = 2*keypadBtnWidth, height = keypadBtnHeight)
 
 # binding all buttons
 plusBtn.bind('<Button-1>', click_btn_func)

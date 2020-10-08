@@ -73,7 +73,7 @@ if __name__ == "__main__":
     gui.title("Simple Calculator")
 
     # set the configuration of GUI window
-    gui.geometry("270x150")
+    gui.geometry("340x180")
 
     # StringVar() is the variable class
     # we create an instance of this class
