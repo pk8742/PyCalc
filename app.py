@@ -1,10 +1,18 @@
 from tkinter import *
+from tkinter import messagebox
 from tkinter.messagebox import *
+import math
 # some useful fonts
 font = ('Verdana',22,'bold')
 keypadFont = ('Verdana',22)
 
 # important functions
+def iExit():
+    iExit = messagebox.askyesno("Scientific Calculator","Confirm if you want to exit")
+    if iExit:
+        window.destroy()
+        return
+
 def all_clear():
     textField.delete(0,END)
 
@@ -13,6 +21,27 @@ def clear():
     ex = ex[0:len(ex)-1]
     textField.delete(0,END)
     textField.insert(END,ex)
+
+def square_root():
+    try:
+        ex = textField.get()
+        answer = math.sqrt(eval(ex))
+        textField.delete(0,END)
+        textField.insert(0,answer)
+    except Exception as e:
+        print("Error", e)
+        showerror("Error", e)
+
+def square():
+    try:
+        ex = textField.get()
+        int_ex = int(ex) # converting string into integers
+        answer = math.pow(int_ex, 2)
+        textField.delete(0,END)
+        textField.insert(0,answer)
+    except Exception as e:
+        print("Error", e)
+        showerror("Error", e)
 
 def click_btn_func(event):
     print("btn clicked")
@@ -36,9 +65,35 @@ def click_btn_func(event):
 #creating a window
 window = Tk()
 window.title("PyCalc [A simple tool for calculation]")
-window.geometry('460x400') # setting dimensions of window, as width*height
-#set window color
+window.geometry('443x340') # setting dimensions of window, as width*height
+# set window color
 window.configure(bg='#F3F5F5')
+window.resizable(width=False, height=False) # so that the window can't be maximized or increased
+
+#=========================================Menu=============================================================
+# creating the menubar
+menubar = Menu(window)
+
+# creating menubar options
+filemenu = Menu(menubar, tearoff=0)
+menubar.add_cascade(label="File", menu=filemenu)
+filemenu.add_command(label="Standard")
+filemenu.add_command(label="Scientific")
+filemenu.add_separator()
+filemenu.add_command(label="Exit", command=iExit)
+
+editmenu = Menu(menubar, tearoff=0)
+menubar.add_cascade(label="Edit", menu=editmenu)
+editmenu.add_command(label="Cut")
+editmenu.add_command(label="Copy")
+editmenu.add_separator()
+editmenu.add_command(label="Paste")
+
+helpmenu = Menu(menubar, tearoff=0)
+menubar.add_cascade(label="Help", menu=helpmenu)
+helpmenu.add_command(label="View help")
+
+window.configure(menu=menubar)
 
 # picture label
 pic = PhotoImage(file='calc1.png')
@@ -51,7 +106,7 @@ headingText.pack(side=TOP)
 
 # text field
 textField = Entry(window, font=('Verdana',22),justify=RIGHT)
-textField.pack(side=TOP,fill=X,padx=10)
+textField.place(x=10, y=90, width=420, height=35)
 
 # creating button pad
 buttonFrame = Frame(window, width=450, height=340)
@@ -61,9 +116,9 @@ buttonFrame.place(x=10,y=130)
 # now adding buttons to frame
 # btn1 = Button(buttonFrame,text="1",font=font)
 # btn1.pack(side=LEFT)
-temp = 1
+"""temp = 1
 beforeWidth = 0
-beforeHeight = 0
+beforeHeight = 0"""
 keypadBtnWidth = 70
 keypadBtnHeight = 50
 """
@@ -80,7 +135,7 @@ for i in range(0,3):
             beforeHeight = i*keypadBtnHeight
         btn.bind('<Button-1>', click_btn_func)
 """
-btn1 = Button(buttonFrame,text="1",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5',width=1)
+btn1 = Button(buttonFrame,text="1",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
 btn1.place(x = 0, y = 0, width = keypadBtnWidth, height = keypadBtnHeight)
 btn1.bind('<Button-1>',click_btn_func)
 
@@ -150,7 +205,7 @@ startGroupBtn = Button(buttonFrame,text="(",font=keypadFont, relief='groove',bg=
 startGroupBtn.place(x = 4*keypadBtnWidth, y = 1*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
 picSquare = PhotoImage(file='square.png')
-squareBtn = Button(buttonFrame, image=picSquare,font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+squareBtn = Button(buttonFrame, image=picSquare,font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5', command=square)
 squareBtn.place(x = 4*keypadBtnWidth, y = 2*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
 allClearBtn = Button(buttonFrame,text="AC",font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5', command=all_clear)
@@ -160,7 +215,7 @@ endGroupBtn = Button(buttonFrame,text=")",font=keypadFont, relief='groove',bg='#
 endGroupBtn.place(x = 5*keypadBtnWidth, y = 1*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
 picRoot = PhotoImage(file='square-root.png')
-rootBtn = Button(buttonFrame, image=picRoot,font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5')
+rootBtn = Button(buttonFrame, image=picRoot,font=keypadFont, relief='groove',bg='#E7ECEB', activebackground='#F3F5F5', command=square_root)
 rootBtn.place(x = 5*keypadBtnWidth, y = 2*keypadBtnHeight, width = keypadBtnWidth, height = keypadBtnHeight)
 
 # equalsBtn
@@ -174,6 +229,9 @@ multyBtn.bind('<Button-1>', click_btn_func)
 divideBtn.bind('<Button-1>', click_btn_func)
 zeroBtn.bind('<Button-1>', click_btn_func)
 dotBtn.bind('<Button-1>', click_btn_func)
+percentBtn.bind('<Button-1>', click_btn_func)
+startGroupBtn.bind('<Button-1>', click_btn_func)
+endGroupBtn.bind('<Button-1>', click_btn_func)
 equalBtn.bind('<Button-1>', click_btn_func)
 
 # clearBtn.bind('<Button-1>',clear)
